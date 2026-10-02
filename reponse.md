@@ -97,6 +97,26 @@ Défavorable : N comparaisons (dernier élément de l'annuaire).
 ---
 
 ## Exercice 4
+**Fonction complétée**
+alice@mail.com : 19
+bob@mail.com : 104
+carole@mail.com : 747
+david@mail.com : 189
+eve@mail.com : 181
+
+**Question 3**
+C'est toujours le même indice. C'est indispensable pour pouvoir retrouver l'utilisateur à l'aide de l'indice du bucket correspondant.
+
+**Question 4**
+Non, il ne sont pas voisins.
+
+**Question 5**
+david@mail.com : -835
+eve@mail.com : -843
+On ne pourrait pas accéder aux tableaux correctement avec ces indices négatifs.
+
+**Question 6**
+Oui, deux addresse peuvent avoir le même indice. Ce n'est pas un défaut, mais une collision. Pour gérer les collisions, on peut utiliser des listes chaînée.
 
 ---
 
