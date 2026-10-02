@@ -37,6 +37,51 @@ Réponse : Le volume de données et la fréquence des opérations.
 ---
 
 ## Exercice 2
+**Suite de valeurs**
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 16
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 32
+Capacite: 64
+Capacite: 64
+Capacite: 64
+Capacite: 64
+Capacite: 64
+Capacite: 64
+Capacite: 64
+Capacite: 64
+
+**Question**
+Combien de fois realloc a-t-il été appelé pour ces 40 insertions ? Et pour 1000 insertions ?
+Réponse : Pour 40 insertions, realloc est appelé 3 fois (16, 32, 64). Pour 1000 insertions 7 fois (16, 32, 64, 128, 256, 512, 1024).
 
 ---
 
