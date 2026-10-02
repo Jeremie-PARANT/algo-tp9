@@ -3,9 +3,9 @@
 #include <string.h>
 #include "annuaire.h"
 #define TAILLE_TABLE 1024
-int hachage(const char *email)
+unsigned long hachage(const char *email)
 {
-    int h = 5381;
+    unsigned long h = 5381;
     int c;
 
     while ((c = (unsigned char)*email++))

@@ -13,21 +13,21 @@ int main(void)
 
     for (int i = 0; i < 5; i++)
     {
-        int indice = hachage(emails[i]);
-        printf("%s : %d\n", emails[i], indice);
+        unsigned long indice = hachage(emails[i]);
+        printf("%s : %lu\n", emails[i], indice);
     }
 
-    int indice = hachage(emails[0]);
-    printf("%s : %d\n", emails[0], indice);
+    unsigned long indice = hachage(emails[0]);
+    printf("%s : %lu\n", emails[0], indice);
 
     indice = hachage(emails[0]);
-    printf("%s : %d\n", emails[0], indice);
+    printf("%s : %lu\n", emails[0], indice);
 
     indice = hachage("user1@mail.com");
-    printf("%s : %d\n", "user1@mail.com", indice);
+    printf("%s : %lu\n", "user1@mail.com", indice);
 
     indice = hachage("user2@mail.com");
-    printf("%s : %d\n", "user2@mail.com", indice);
+    printf("%s : %lu\n", "user2@mail.com", indice);
 
     return 0;
 }
