@@ -61,11 +61,36 @@ int main(void)
     indice = hachage("user2@mail.com");
     printf("%s : %lu\n", "user2@mail.com", indice);
 
+    // --- Test insertion et recherche hachage --- //
+    printf(" --- TEST INSERTION ET RECHERCHE HACHAGE --- \n");
+
+    for (int i = 0; i < 5; i++)
+    {
+        hash_insert(emails[i], i + 1);
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%s : %s\n",
+               emails[i],
+               hash_search(emails[i]) ? "Found" : "Not found");
+    }
+
+    printf("%s : %s\n",
+           "bibi@mail.com",
+           hash_search("bibi@mail.com") ? "Found" : "Not found");
+
+    printf("%s : %s\n",
+           "bob2@mail.com",
+           hash_search("bob2@mail.com") ? "Found" : "Not found");
+
     seq_free();
+    hash_free();
 
     // --- Test annuaire vide --- //
     printf(" --- TEST ANNUAIRE VIDE --- \n");
-    printf("Empty : %s\n", seq_search("test@mail.com") ? "Found" : "Not found");
+    printf("Sequentiel, annuaire vide : %s\n", seq_search("test@mail.com") ? "Found" : "Not found");
+    printf("Hachage, annuaire vide : %s\n", hash_search("test@mail.com") ? "Found" : "Not found");
 
     return 0;
 }

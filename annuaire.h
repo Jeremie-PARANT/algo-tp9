@@ -12,5 +12,8 @@ void seq_insert(const char *email, int id);
 bool seq_search(const char *email);
 void seq_free(void);
 unsigned long hachage(const char *email);
+void hash_insert(const char *email, int id);
+bool hash_search(const char *email);
+void hash_free(void);
 
 #endif

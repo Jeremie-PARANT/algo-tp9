@@ -4,8 +4,7 @@
 expression must be a modifiable lvalue
 
 **Question**
-Pourquoi ne peut-on pas affecter une chaîne à un tableau de char avec = ?
-Réponse : Car char est un tableau de caractères, il faut donc copier les caractères dans le tableau avec snprintf.
+Car char est un tableau de caractères, il faut donc copier les caractères dans le tableau avec snprintf.
 
 ---
 
@@ -27,11 +26,9 @@ Fréquence À quelle fréquence chaque opération est-elle appelée ?
 Très fréquemment, à chaque tentative d'inscription d'un nouvel utilisateur.
 
 **Question 2**
-Parmi les cinq points, lesquels vous aideraient à choisir entre deux structures de données ? Lesquels ne vous apprennent rien sur ce choix ?
-Réponse : Le volume de données et la fréquence des opérations, car ils influencent les performances. Les contraintes de temps et de mémoire peuvent également être pertinentes.
+Le volume de données et la fréquence des opérations, car ils influencent les performances. Les contraintes de temps et de mémoire peuvent également être pertinentes.
 
 **Question 3**
-Deux annuaires ont les mêmes entrées et la même sortie, l’un contient 30 employés consultés deux fois par jour, l’autre 5 millions de comptes interrogés mille fois par seconde. Quels sont les deux points de la grille qui les distinguent ?
 Réponse : Le volume de données et la fréquence des opérations.
 
 ---
@@ -79,9 +76,7 @@ Capacite: 64
 Capacite: 64
 Capacite: 64
 
-**Question**
-Combien de fois realloc a-t-il été appelé pour ces 40 insertions ? Et pour 1000 insertions ?
-Réponse : Pour 40 insertions, realloc est appelé 3 fois (16, 32, 64). Pour 1000 insertions 7 fois (16, 32, 64, 128, 256, 512, 1024).
+**Question**Pour 40 insertions, realloc est appelé 3 fois (16, 32, 64). Pour 1000 insertions 7 fois (16, 32, 64, 128, 256, 512, 1024).
 
 ---
 
@@ -121,7 +116,11 @@ Oui, deux addresse peuvent avoir le même indice. Ce n'est pas un défaut, mais 
 ---
 
 ## Exercice 5
+**Question 3**
+La liste chaînée pointe vers le mauvais élément (lui-même).
 
+**Question 4**
+Car si on ne le sauvegarde pas avant, on perd la référence au prochain élément de la liste chaînée.
 ---
 
 ## Exercice 6
