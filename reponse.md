@@ -86,6 +86,13 @@ Réponse : Pour 40 insertions, realloc est appelé 3 fois (16, 32, 64). Pour 100
 ---
 
 ## Exercice 3
+**4. Retour de la recherche**
+Il ne retourne que false, car avec "annuaire[i].email == email", il compare les adresses mémoire.
+
+**Question**
+Favorable : Une comparaison (1er élément de l'annuaire).
+Moyen : supérieur à 1 mais inférieur à N comparaisons (élément au milieu de l'annuaire).
+Défavorable : N comparaisons (dernier élément de l'annuaire).
 
 ---
 
