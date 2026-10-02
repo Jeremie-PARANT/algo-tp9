@@ -1,96 +1,84 @@
 #include <stdio.h>
 #include "annuaire.h"
 
+int nb_ok = 0;
+int nb_echec = 0;
+
+void verifier(const char *titre, bool obtenu, bool attendu)
+{
+    if (obtenu == attendu)
+    {
+        printf("[OK] %s\n", titre);
+        nb_ok++;
+    }
+    else
+    {
+        printf("[ECHEC] %s\n", titre);
+        nb_echec++;
+    }
+}
+
 int main(void)
 {
-    // --- Test de l'annuaire séquentiel --- //
-    printf(" --- RECHERCHE ANNUAIRE SEQUENTIELLE --- \n");
     User users[5];
+
+    users[0].id = 1; snprintf(users[0].email, EMAIL_MAX, "alice@mail.com");
+    users[1].id = 2; snprintf(users[1].email, EMAIL_MAX, "bob@mail.com");
+    users[2].id = 3; snprintf(users[2].email, EMAIL_MAX, "carole@mail.com");
+    users[3].id = 4; snprintf(users[3].email, EMAIL_MAX, "david@mail.com");
+    users[4].id = 5; snprintf(users[4].email, EMAIL_MAX, "eve@mail.com");
+
+    // --- Tests annuaire vide --- //
+    printf("--- ANNUAIRES VIDES ---\n");
+    verifier("Recherche vide - séquentiel", seq_search("alice@mail.com"), false);
+    verifier("Recherche vide - hachage", hash_search("alice@mail.com"), false);
+
+    // --- Insertion --- //
     for (int i = 0; i < 5; i++)
     {
-        users[i].id = i + 1;
-        snprintf(users[i].email, EMAIL_MAX, "user%d@mail.com", i + 1);
         seq_insert(users[i].email, users[i].id);
+        hash_insert(users[i].email, users[i].id);
     }
 
-    printf("%s : %s\n",
-           users[0].email,
-           seq_search(users[0].email) ? "Found" : "Not found");
-
-    printf("%s : %s\n",
-           users[1].email,
-           seq_search(users[1].email) ? "Found" : "Not found");
-
-    printf("%s : %s\n",
-           users[2].email,
-           seq_search(users[2].email) ? "Found" : "Not found");
-
-    printf("%s : %s\n",
-           "bibi@mail.com",
-           seq_search("bibi@mail.com") ? "Found" : "Not found");
-
-    printf("%s : %s\n",
-           "bob@mail.com",
-           seq_search("bob@mail.com") ? "Found" : "Not found");
-
-    // --- Test de hachage --- //
-    printf(" --- TEST HACHAGE --- \n");
-    const char *emails[] = {
-        "alice@mail.com",
-        "bob@mail.com",
-        "carole@mail.com",
-        "david@mail.com",
-        "eve@mail.com"
-    };
-
+    // --- Tests recherche après insertion --- //
+    printf("\n--- RECHERCHE DES 5 UTILISATEURS ---\n");
     for (int i = 0; i < 5; i++)
     {
-        unsigned long indice = hachage(emails[i]);
-        printf("%s : %lu\n", emails[i], indice);
+        char titre[EMAIL_MAX + 20];
+
+        snprintf(titre, sizeof(titre), "%s - séquentiel", users[i].email);
+
+        verifier(titre, seq_search(users[i].email), true);
+
+        snprintf(titre, sizeof(titre), "%s - hachage", users[i].email);
+
+        verifier(titre, hash_search(users[i].email), true);
     }
 
-    unsigned long indice = hachage(emails[0]);
-    printf("%s : %lu\n", emails[0], indice);
+    // --- Tests adresses absentes --- //
+    printf("\n--- ADRESSES ABSENTES ---\n");
 
-    indice = hachage(emails[0]);
-    printf("%s : %lu\n", emails[0], indice);
+    verifier("bibi@mail.com - séquentiel", seq_search("bibi@mail.com"), false);
+    verifier("bibi@mail.com - hachage", hash_search("bibi@mail.com"), false);
+    verifier("bob2@mail.com - séquentiel", seq_search("bili@mail.com"), false);
+    verifier("bob2@mail.com - hachage", hash_search("bili@mail.com"), false);
 
-    indice = hachage("user1@mail.com");
-    printf("%s : %lu\n", "user1@mail.com", indice);
+    // --- Tests casse --- //
+    printf("\n--- TEST DE LA CASSE ---\n");
 
-    indice = hachage("user2@mail.com");
-    printf("%s : %lu\n", "user2@mail.com", indice);
+    verifier("Alice@mail.com - séquentiel", seq_search("Alice@mail.com"), false);
+    verifier("Alice@mail.com - hachage", hash_search("Alice@mail.com"), false);
 
-    // --- Test insertion et recherche hachage --- //
-    printf(" --- TEST INSERTION ET RECHERCHE HACHAGE --- \n");
-
-    for (int i = 0; i < 5; i++)
-    {
-        hash_insert(emails[i], i + 1);
-    }
-
-    for (int i = 0; i < 5; i++)
-    {
-        printf("%s : %s\n",
-               emails[i],
-               hash_search(emails[i]) ? "Found" : "Not found");
-    }
-
-    printf("%s : %s\n",
-           "bibi@mail.com",
-           hash_search("bibi@mail.com") ? "Found" : "Not found");
-
-    printf("%s : %s\n",
-           "bob2@mail.com",
-           hash_search("bob2@mail.com") ? "Found" : "Not found");
+    // --- Resultat final --- //
+    printf("\n--- RESULTAT FINAL ---\n");
+    printf("Tests réussis : %d\n", nb_ok);
+    printf("Tests échoués : %d\n", nb_echec);
 
     seq_free();
     hash_free();
 
-    // --- Test annuaire vide --- //
-    printf(" --- TEST ANNUAIRE VIDE --- \n");
-    printf("Sequentiel, annuaire vide : %s\n", seq_search("test@mail.com") ? "Found" : "Not found");
-    printf("Hachage, annuaire vide : %s\n", hash_search("test@mail.com") ? "Found" : "Not found");
-
-    return 0;
+    if (nb_echec == 0)
+        return 0;
+    else
+        return 1;
 }

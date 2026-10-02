@@ -124,5 +124,37 @@ Car si on ne le sauvegarde pas avant, on perd la référence au prochain éléme
 ---
 
 ## Exercice 6
+**Sortie obtenue**
+--- ANNUAIRES VIDES ---
+[OK] Recherche vide - séquentiel
+[OK] Recherche vide - hachage
 
----
+--- RECHERCHE DES 5 UTILISATEURS ---
+[OK] alice@mail.com - séquentiel
+[OK] alice@mail.com - hachage
+[OK] bob@mail.com - séquentiel
+[OK] bob@mail.com - hachage
+[OK] carole@mail.com - séquentiel
+[OK] carole@mail.com - hachage
+[OK] david@mail.com - séquentiel
+[OK] david@mail.com - hachage
+[OK] eve@mail.com - séquentiel
+[OK] eve@mail.com - hachage
+
+--- ADRESSES ABSENTES ---
+[OK] bibi@mail.com - séquentiel
+[OK] bibi@mail.com - hachage
+[OK] bob2@mail.com - séquentiel
+[OK] bob2@mail.com - hachage
+
+--- TEST DE LA CASSE ---
+[OK] Alice@mail.com - séquentiel
+[OK] Alice@mail.com - hachage
+
+--- RESULTAT FINAL ---
+Tests réussis : 18
+Tests échoués : 0
+
+
+**Code de retour**
+0
