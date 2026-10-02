@@ -37,7 +37,7 @@ Réponse : Le volume de données et la fréquence des opérations.
 ---
 
 ## Exercice 2
-**Suite de valeurs**
+**Suite des capacités observées**
 Capacite: 16
 Capacite: 16
 Capacite: 16
@@ -86,7 +86,7 @@ Réponse : Pour 40 insertions, realloc est appelé 3 fois (16, 32, 64). Pour 100
 ---
 
 ## Exercice 3
-**4. Retour de la recherche**
+**4. Observations**
 Il ne retourne que false, car avec "annuaire[i].email == email", il compare les adresses mémoire.
 
 **Question**
